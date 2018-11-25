@@ -10,7 +10,7 @@
               <div class="block-image">
                 <div class="view view-first">
                   <%= link_to post_image_path(post_image.id) do %>
-                  <%= attachment_image_tag @post_image, :image %>
+                  <%= attachment_image_tag post_image, :image %>
                   <% end %>
                 </div>
               </div>
@@ -26,9 +26,14 @@
                 <li>By
                   <%= post_image.user.name %>
                 </li>
-                <li>
-                  <a href="#">23 コメント</a>
-                </li>
+                <ul class="inline-meta">
+                  <li>By
+                    <%= post_image.user.name %>
+                  </li>
+                  <li>
+                    <%= link_to "#{post_image.post_comments.count} コメント", post_image_path(post_image.id) %>
+                  </li>
+                </ul>
               </ul>
             </div>
           </div>
@@ -39,3 +44,5 @@
   </div>
 </div>
 </section>
+
+<%= paginate @post_images, class: "pagenate" %>
