@@ -39,7 +39,9 @@
             </li>
             <li class="">
               <!-- ↓以下のコードは、5章で正しいroutingに書き直します。 -->
-              <%= link_to 'マイページ', "#" %>
+              <li class="">
+                <%= link_to 'マイページ', user_path(current_user.id) %>
+              </li>
             </li>
             <% else %>
             <li class="">

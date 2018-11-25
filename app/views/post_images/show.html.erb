@@ -40,6 +40,12 @@
                 <i class="fa fa-comment"></i>
                 <a href="#comments"><%= @post_image.post_comments.count %></a>
               </li>
+              <!-- 削除ボタン -->
+              <li>
+                <% if @post_image.user == current_user %>
+                <%= link_to "削除", post_image_path(@post_image), method: :delete %>
+                <% end %>
+              </li>
             </ul>
             <div class="post-content-inner mt-20">
               <p><%= @post_image.caption %></p>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # get 'users/show'
   devise_for :users
   root 'post_images#index'
 
@@ -8,4 +9,11 @@ Rails.application.routes.draw do
     resource :post_comments, only: [:create, :destroy]
 	end
     #親子関係にある子にはsをつけない。単数にするとコントローたのidをリクエストに含まれなくするため。
+    
+    resources :post_images, only: [:new, :create, :index, :show, :destroy] do
+    resource :favorites, only: [:create, :destroy]
+    resource :post_comments, only: [:create, :destroy]
+end
+	resources :users, only: [:show]
+
 end
